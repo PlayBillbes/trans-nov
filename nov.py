@@ -78,6 +78,7 @@ def proxyfixer(a):
         try:
             r = requests.get("https://translate.google.com/",proxies= {'http': proxy,'https': proxy}, timeout=5)
             stat = r.status_code
+            print(stat)
             if stat == 200:
                 #return {'http': proxy,'https': proxy}
                 f = open('proxy.json')
