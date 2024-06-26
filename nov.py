@@ -11,7 +11,7 @@ header2 = {
     'Authorization': 'Bearer 95ee7681558840b894f95632dbf72cf1a0a866090844451c86438a520f2155e1',
 }
 def proxyfix(keyword):
-    url = "https://raw.githubusercontent.com/parserpp/ip_ports/main/proxyinfo.txt"#"https://www.proxyscan.io/download?type=http"
+    url = "https://raw.githubusercontent.com/Vann-Dev/proxy-list/main/proxies/http.txt"#"https://www.proxyscan.io/download?type=http"
     proxis = requests.get(url).text
     proxis = proxis.splitlines()
     for proxy in proxis:
@@ -127,11 +127,11 @@ def req():
             proxy = proxycheck(prox)
 
 
-            with open(chapter+ '.txt', 'w') as fp:
+            with open(str(chapter)+ '.txt', 'w') as fp:
                 pass
             for o in content:
                 original = o
-                f = open(chapter+ '.txt',"a", encoding="utf-8")
+                f = open(str(chapter)+ '.txt',"a", encoding="utf-8")
                 f.write("\n"+o)
                 #proxy = {'http': proxy,'https': proxy}
                 translated = GoogleTranslator(source='auto', target='my', proxies=proxy).translate(text=str(o).replace('"',''))
@@ -139,10 +139,11 @@ def req():
                 
                 print(translated)
                 try:
-                    f = open(chapter+ '.txt',"a", encoding="utf-8")
+                    f = open(str(chapter)+ '.txt',"a", encoding="utf-8")
                     f.write("\n"+translated)
                 except:
                     pass
 
 
 req()
+#print(content)
